@@ -6,16 +6,16 @@
 <!--<form action="<%#= movie_path (@movie.id) %>" method="post" data-turbo="false">-->
 <!--  <input name="authenticity_token" value="<%#= form_authenticity_token %>" type="hidden">-->
   <!--<input name="_method" value="patch" type="hidden">-->
-<%= form_with(url: movie_path(@movie.id), method: :patch, data: {turbo: false}) do %>
+<%= form_with(url: movie_path(@movie), method: :patch, data: {turbo: false}) do %>
 <div>
 
 <!--    <label for="title_box">
       Title
     </label>-->
-<%= label_tag :title_box, "Title" %>
+<%= label_tag :title %>
   
 <!--    <input type="text" id="title_box" name="query_title" value="<%#= @movie.title %>">-->
-  <%= text_field_tag :query_title, @movie.title, {id: "title_box"} %>
+  <%= text_field_tag "movie[title]", @movie.title %>
   </div>
 
 
@@ -23,10 +23,10 @@
 <!--    <label for="description_box">
       Description
     </label>-->
-    <%= label_tag :description_box, "Description" %>
+    <%= label_tag :description%>
 
    <!-- <textarea id="description_box" name="query_description" rows="3"><%#= @movie.description %></textarea>-->
-   <%= text_area_tag :query_description, @movie.description, {id: "description_box"} %>
+   <%= text_area_tag "movie[description]", @movie.description, {rows: 3} %>
   </div>
 
 <!--  <button>

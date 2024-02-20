@@ -4,10 +4,10 @@
   <p style="color: red;"><%= message %></p>
 <% end %>
 
-<%= form_with(url: movies_path(@movie) , data: { turbo: false}) do %>
+<%= form_with(model: @movie , data: { turbo: false}) do |form|%>
   <div>
-    <%= label_tag :title %>
-    <%= text_field_tag :title, @movie.title %>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
     <!--<input type="text" id="title_box" name="query_title" value="<%#= @movie.title %>">-->
   </div>
 
@@ -15,14 +15,14 @@
     <!--<label for="description_box">-->
       <!--Description-->
     <!--</label>-->
-    <%= label_tag :description %>
+    <%= form.label :description %>
 
     <!--<textarea id="description_box" name="query_description" rows="3"><%#= @movie.description %></textarea>-->
-    <%= text_area_tag :description, @movie.description, { rows: 3} %>
+    <%= form.text_area :description,{ rows: 3} %>
   </div>
 
 <!--  <button>
     Create Movie
   </button>-->
-  <%= button_tag "Create Movie" %>
+  <%= form.button %>
 <% end %>
